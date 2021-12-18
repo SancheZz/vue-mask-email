@@ -6,13 +6,6 @@
   ],
   "main": "./dist/MaskEmail.umd.js",
   "module": "./dist/MaskEmail.es.js",
-  "exports": {
-    ".": {
-      "import": "./dist/MaskEmail.es.js",
-      "require": "./dist/MaskEmail.umd.js",
-      "style": "./dist/style.css"
-    }
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/SancheZz/vue-mask-email.git"
@@ -26,38 +19,31 @@
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview",
-    "test": "npm run lint:tsc && npm run lint:stylelint",
+    "test": "npm run lint:tsc && npm run test:e2e",
     "lint:tsc": "vue-tsc --noEmit",
-    "lint:stylelint": "stylelint MaskEmail",
+    "test:e2e": "echo ok",
     "prepare": "husky install"
   },
   "dependencies": {
-    "vue": "^3.2.20"
+    "vue": "^3.2.26"
   },
   "devDependencies": {
-    "@amatlash/vite-plugin-stylelint": "^1.1.1",
-    "@typescript-eslint/eslint-plugin": "^4.33.0",
-    "@typescript-eslint/parser": "^4.33.0",
-    "@vitejs/plugin-vue": "^1.9.3",
+    "@typescript-eslint/eslint-plugin": "^5.7.0",
+    "@typescript-eslint/parser": "^5.7.0",
+    "@typescript/lib-dom": "npm:@types/web@^0.0.48",
+    "@vitejs/plugin-vue": "^2.0.1",
     "eslint": "^7.32.0",
     "eslint-config-standard": "^16.0.3",
-    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^5.1.0",
-    "eslint-plugin-vue": "^7.19.1",
-    "husky": "^7.0.2",
-    "sass": "^1.42.1",
-    "stylelint": "^13.13.1",
-    "stylelint-config-rational-order": "^0.1.2",
-    "stylelint-config-standard": "^22.0.0",
-    "stylelint-order": "^4.1.0",
-    "stylelint-scss": "^3.21.0",
-    "typescript": "^4.4.3",
-    "vite": "^2.6.5",
+    "eslint-plugin-promise": "^5.2.0",
+    "eslint-plugin-vue": "^8.2.0",
+    "husky": "^7.0.4",
+    "sass": "^1.45.0",
+    "typescript": "^4.5.4",
+    "vite": "^2.7.3",
     "vite-plugin-eslint": "^1.3.0",
-    "vue-tsc": "^0.28.1"
-  },
-  "peerDependencies": {
-    "vue": "^3.2.20"
+    "vite-plugin-stylelint": "^1.1.0",
+    "vue-tsc": "^0.29.8"
   }
 }

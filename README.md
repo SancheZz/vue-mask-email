@@ -1,4 +1,4 @@
-# @yasanchezz/vue-mask-number
+# @yasanchezz/vue-mask-email
 
 > This is an input mask which is based on VueJs 3.2+ and requires modern browsers.
 
@@ -10,9 +10,11 @@ Install npm package
 Declare dependency in main.js
 
 ``` js
-import VueMaskEmail from '@yasanchezz/vue-mask-email';
-import '@yasanchezz/vue-mask-email/dist/style.css';
-Vue.use(VueMaskEmail);
+import "@yasanchezz/vue-mask-email/dist/style.css";
+
+createApp(App)
+  .use(MaskEmail)
+  .mount('#app');
 ```
 
 ## Usage

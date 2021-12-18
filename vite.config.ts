@@ -2,7 +2,7 @@ import path from 'path';
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import eslintPlugin from 'vite-plugin-eslint';
-import viteStylelint from '@amatlash/vite-plugin-stylelint';
+import StylelintPlugin from 'vite-plugin-stylelint';
 
 export default defineConfig({
   plugins: [
@@ -10,7 +10,7 @@ export default defineConfig({
     eslintPlugin({
       fix: true,
     }),
-    viteStylelint(),
+    StylelintPlugin(),
   ],
 
   build: {
