@@ -10,7 +10,8 @@ Install npm package
 Declare dependency in main.js
 
 ``` js
-import "@yasanchezz/vue-mask-email/dist/style.css";
+import MaskEmail from '@yasanchezz/vue-mask-email';
+import '@yasanchezz/vue-mask-email/dist/style.css';
 
 createApp(App)
   .use(MaskEmail)
@@ -21,11 +22,11 @@ createApp(App)
 
 ``` vue
 <template>
-  <vue-mask-email
+  <MaskEmail
     v-model:value="value"
     placeholder="username@example.com"
     class="mask-email"
-  ></vue-mask-email>
+  />
 </template>
 
 <style lang="scss" scoped>
