@@ -51,8 +51,6 @@ jobs:
         with:
           node-version: 16
           cache: 'pnpm'
-          registry-url: 'https://npm.pkg.github.com'
-          scope: '@yasanchezz'
 
       - run: pnpm install
       - run: pnpm run build
@@ -64,6 +62,11 @@ jobs:
       - run: pnpm version patch
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM }}
+
+      - run: git pull --rebase
+        env:
+          DEFAULT_BRANCH: main
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - run: git push origin HEAD
         env:
