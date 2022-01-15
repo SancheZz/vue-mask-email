@@ -95,8 +95,6 @@
   "include": [
     "MaskEmail/*.ts",
     "MaskEmail/*.d.ts",
-    "MaskEmail/*.vue",
-    "src/*.vue",
-    "src/*.d.ts"
+    "MaskEmail/*.vue"
   ]
 }

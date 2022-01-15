@@ -15,11 +15,22 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+
+      - name: install pnpm
+        uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 6.26.1
+
+      - name: set node version to 16
+        uses: actions/setup-node@v2
         with:
           node-version: 16
-      - run: npm ci
-      - run: npm test
+          cache: 'pnpm'
+
+      - run: pnpm install
+
+      - name: run tests
+        run: pnpm run test
 
   publish:
     needs: tests
@@ -28,19 +39,26 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          registry-url: https://registry.npmjs.org/
-          node-version: 16
 
-      - run: npm ci
-      - run: npm run build
+      - name: install pnpm
+        uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 6.26.1
+
+      - name: set node version to 16
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+          cache: 'pnpm'
+
+      - run: pnpm install
+      - run: pnpm run build
 
       - run: |
           git config user.name github-actions
           git config user.email ${{ secrets.email }}
 
-      - run: npm version patch
+      - run: pnpm version patch
         env:
           NODE_AUTH_TOKEN: ${{ secrets.npm }}
 
@@ -49,6 +67,6 @@ jobs:
           DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - run: npm publish --access public
+      - run: pnpm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.npm }}

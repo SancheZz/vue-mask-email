@@ -11,9 +11,9 @@ const props = defineProps <Props>();
 
 const computedPlaceholder = computed(function () {
   const placeholderParts = parseEmail(props.placeholder);
-  const inputParts = parseEmail(props.value);
+  const inputParts = parseEmail(props.value) || {};
 
-  if (placeholderParts && inputParts) {
+  if (placeholderParts) {
     const name = inputParts.name || placeholderParts.name || 'username';
     const server = inputParts.server || placeholderParts.server || 'example';
     const domain = inputParts.domain || placeholderParts.domain || 'com';
