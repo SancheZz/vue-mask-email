@@ -50,17 +50,19 @@ jobs:
         with:
           node-version: 16
           cache: 'pnpm'
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@yasanchezz'
 
       - run: pnpm install
       - run: pnpm run build
 
       - run: |
           git config user.name github-actions
-          git config user.email ${{ secrets.email }}
+          git config user.email ${{ secrets.EMAIL }}
 
       - run: pnpm version patch
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.npm }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM }}
 
       - run: git push origin HEAD
         env:
@@ -69,4 +71,4 @@ jobs:
 
       - run: pnpm publish --access public
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.npm }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM }}
