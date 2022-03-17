@@ -8,6 +8,7 @@ on:
       - 'MaskEmail/**'
       - 'tests/**/*.ts'
       - .github/**
+      - 'package.json'
 
 jobs:
   tests:
