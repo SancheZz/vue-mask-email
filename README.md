@@ -31,11 +31,8 @@ createApp(App)
 
 <style lang="scss" scoped>
 .mask-email {
-  /* padding for input and placeholder */
-  --mask-padding: 5px 10px;
-
   /* input text's css property color */
-  --mask-input-input: gray;
+  --mask-input-color: gray;
 
   /* placeholder text's css property color */
   --mask-placeholder-color: pink;

@@ -55,7 +55,7 @@ function calculateSymbolClasses (symbol: string, index: number) {
   right: 0;
   bottom: 0;
   left: 0;
-  padding: var(--mask-padding, $padding);
+  padding: 0;
   overflow: hidden;
   text-align: left;
   pointer-events: none;

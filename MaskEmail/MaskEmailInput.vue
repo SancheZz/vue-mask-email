@@ -46,9 +46,10 @@ function handleInput (event: Event) {
 @import './defaults';
 
 .email-input {
+  background: transparent;
   box-sizing: border-box;
   width: 100%;
-  padding: var(--mask-padding, $padding);
+  padding: 0;
   color: var(--mask-input-color, $input-color);
   font: inherit;
   text-align: left;
