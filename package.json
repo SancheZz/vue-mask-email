@@ -2,7 +2,8 @@
   "name": "@yasanchezz/vue-mask-email",
   "version": "0.1.4",
   "files": [
-    "dist/*"
+    "dist/*",
+    "MaskEmail/MaskEmail.d.ts"
   ],
   "main": "./dist/MaskEmail.umd.js",
   "module": "./dist/MaskEmail.es.js",
