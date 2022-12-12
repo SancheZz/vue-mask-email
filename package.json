@@ -1,6 +1,6 @@
 {
   "name": "@yasanchezz/vue-mask-email",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "files": [
     "dist/*",
     "MaskEmail/*"
