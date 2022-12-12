@@ -1,10 +1,10 @@
 const patterns = [
-  /^@/, // the first dog
-  /\s/g, // spaces
-  /(?<=@)\./, // dot after dog
+  /^@/, // The first dog
+  /\s/g, // Spaces
+  /(?<=@)\./, // Dot after dog
 ];
 
-export default function sanitizeEmail (email = '') {
+export default function sanitizeEmail(email = '') {
   return patterns.reduce(
     (result, pattern) => result.replace(pattern, ''),
     email,

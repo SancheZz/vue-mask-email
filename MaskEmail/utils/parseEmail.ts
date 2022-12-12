@@ -13,18 +13,22 @@ const patterns = [
 ];
 
 type EmailParts = {
+  domain?: string | undefined;
   name?: string | undefined;
   server?: string | undefined;
-  domain?: string | undefined;
 };
 
-export default function parseEmail (email = '') {
+function areEmailParts(value: unknown): value is EmailParts {
+  return Boolean(value) && typeof value === 'object';
+}
+
+export default function parseEmail(email = '') {
   for (const pattern of patterns) {
     const parts = email.match(pattern);
     const groups = parts?.groups;
 
-    if (groups) {
-      return groups as EmailParts;
+    if (areEmailParts(groups)) {
+      return groups;
     }
   }
 }

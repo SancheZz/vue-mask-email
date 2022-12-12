@@ -9,7 +9,7 @@ type Props = {
 
 const props = defineProps <Props>();
 
-const computedPlaceholder = computed(function () {
+const computedPlaceholder = computed(() => {
   const placeholderParts = parseEmail(props.placeholder);
   const inputParts = parseEmail(props.value) || {};
 
@@ -23,11 +23,11 @@ const computedPlaceholder = computed(function () {
   return 'username@example.com';
 });
 
-function doesSymbolEqual (symbol: string, index: number) {
+function doesSymbolEqual(symbol: string, index: number) {
   return props.value[index] === symbol;
 }
 
-function calculateSymbolClasses (symbol: string, index: number) {
+function calculateSymbolClasses(symbol: string, index: number) {
   const cssClassName = 'placeholder-symbol';
   return [cssClassName, {
     [`${cssClassName}--equaled`]: doesSymbolEqual(symbol, index),
@@ -59,6 +59,7 @@ function calculateSymbolClasses (symbol: string, index: number) {
   overflow: hidden;
   text-align: left;
   pointer-events: none;
+  padding: var(--mask-padding, 0px);
 }
 
 .placeholder-symbol {

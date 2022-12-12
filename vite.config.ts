@@ -1,8 +1,8 @@
-import path from 'path';
+import * as path from 'path';
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import eslintPlugin from 'vite-plugin-eslint';
-import StylelintPlugin from 'vite-plugin-stylelint';
+import { viteStaticCopy } from 'vite-plugin-static-copy';
 
 export default defineConfig({
   plugins: [
@@ -10,14 +10,21 @@ export default defineConfig({
     eslintPlugin({
       fix: true,
     }),
-    StylelintPlugin(),
+    viteStaticCopy({
+      targets: [
+        {
+          src: 'MaskEmail/MaskEmail.d.ts',
+          dest: './',
+        },
+      ],
+    }),
   ],
 
   build: {
     lib: {
       entry: path.resolve(__dirname, 'MaskEmail/plugin.ts'),
-      name: 'MyLib',
-      fileName: (format) => `MaskEmail.${format}.js`,
+      name: 'MaskEmail',
+      fileName: format => `MaskEmail.${format}.js`,
     },
     rollupOptions: {
       external: ['vue'],

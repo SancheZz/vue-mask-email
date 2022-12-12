@@ -2,11 +2,15 @@
 import { ref, computed } from 'vue';
 import { sanitizeEmail } from './utils';
 
-type Props = {
+const props = defineProps <{
+  autofocus: boolean;
+  disabled: boolean;
+  enterkeyhint: 'enter'| 'done'| 'go'| 'next'| 'previous'| 'search'| 'send' | null | undefined;
+  name: string;
+  readonly: boolean;
+  required: boolean;
   value: string;
-};
-
-const props = defineProps <Props>();
+}>();
 
 const emit = defineEmits <{
   (event: 'update:value', value: string): void;
@@ -19,16 +23,18 @@ const inputValue = computed({
 
 const input = ref<HTMLInputElement | null>(null);
 
-function handleInput (event: Event) {
-  const target = event.target as HTMLInputElement;
+function handleInput(event: Event) {
+  const { target } = event;
 
-  const isSanitized = target.value.length > inputValue.value.length;
-  const position = isSanitized && target.selectionEnd
-    ? target.selectionEnd - 1
-    : target.selectionEnd;
+  if (target instanceof HTMLInputElement) {
+    const isSanitized = target.value.length > inputValue.value.length;
+    const position = isSanitized && target.selectionEnd
+      ? target.selectionEnd - 1
+      : target.selectionEnd;
 
-  target.value = inputValue.value;
-  target.setSelectionRange(position, position);
+    target.value = inputValue.value;
+    target.setSelectionRange(position, position);
+  }
 }
 </script>
 
@@ -36,7 +42,13 @@ function handleInput (event: Event) {
   <input
     ref="input"
     v-model="inputValue"
+    :autofocus="autofocus"
     class="email-input"
+    :disabled="disabled"
+    :enterkeyhint="enterkeyhint"
+    :name="name"
+    :readonly="readonly"
+    :required="required"
     type="text"
     @input="handleInput"
   >
@@ -51,6 +63,7 @@ function handleInput (event: Event) {
   width: 100%;
   padding: 0;
   color: var(--mask-input-color, $input-color);
+  padding: var(--mask-padding, 0px);
   font: inherit;
   text-align: left;
   border: none;

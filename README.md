@@ -37,6 +37,9 @@ createApp(App)
   /* placeholder text's css property color */
   --mask-placeholder-color: pink;
 
+  /* padding */
+  --mask-padding: 4px 8px;
+
   border: 2px solid black;
   border-radius: 4px;
   transition: border-color .1s ease-out;
