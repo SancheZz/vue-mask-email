@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { computed, toRefs } from 'vue';
+import { computed, toRefs, ref } from 'vue';
 import { sanitizeEmail } from './utils';
 import MaskEmailInput from './MaskEmailInput.vue';
 import MaskEmailPlaceholder from './MaskEmailPlaceholder.vue';
@@ -40,15 +40,32 @@ const emit = defineEmits <{
   (event: 'update:value', value: string): void;
 }>();
 
-const computedValue = computed <string>({
+const computedValue = computed({
   get: () => sanitizeEmail(props.value),
   set: value => emit('update:value', value),
+});
+
+type MaskInput = {
+  input: HTMLInputElement | null;
+};
+
+const rootElement = ref<HTMLDivElement | null>(null);
+const maskInput = ref<MaskInput | undefined>();
+const control = computed(() => maskInput?.value?.input || null);
+
+defineExpose({
+  element: rootElement,
+  control,
 });
 </script>
 
 <template>
-  <div class="mask-email">
+  <div
+    ref="rootElement"
+    class="mask-email"
+  >
     <MaskEmailInput
+      ref="maskInput"
       v-model:value="computedValue"
       :autofocus="autofocus"
       :disabled="disabled"

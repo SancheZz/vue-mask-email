@@ -4,6 +4,11 @@
 import type { DefineComponent } from 'vue';
 import type { Plugin } from 'vue';
 
+export type MaskEmailRef = {
+  control: HTMLInputElement | null;
+  element: HTMLDivElement | null;
+}
+
 declare module 'vue' {
   export interface GlobalComponents {
     MaskEmail: DefineComponent<{

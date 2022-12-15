@@ -20,12 +20,27 @@ createApp(App)
 
 ## Usage
 
+``` ts
+import type { MaskEmailRef } from '@yasanchezz/vue-mask-email'
+
+const value = ref('');
+const maskComponent = ref<MaskEmailRef>();
+const control = computed(() => maskComponent.value?.control);
+
+watch(control, (newControl, oldControl) => {
+  newControl?.addEventListener('invalid', handleInvalid);
+  oldControl?.removeEventListener('invalid', handleInvalid);
+});
+```
+
 ``` vue
 <template>
   <MaskEmail
+    ref="maskComponent"
     v-model:value="value"
     placeholder="username@example.com"
     class="mask-email"
+    required
   />
 </template>
 
@@ -53,5 +68,11 @@ createApp(App)
 ```
 
 ### props
-* __placeholder__ *String* - user visible placeholder
-* __value__ *String* - passed value
+* __autofocus__ *optional Boolean* -- passed attribute;
+* __disabled__ *optional Boolean* -- passed attribute;
+* __enterkeyhint__ *optional String* -- passed attribute;
+* __name__ *optional String* -- passed attribute;
+* __placeholder__ *optional String* - user visible placeholder;
+* __readonly__ *optional Boolean* -- passed attribute;
+* __required__ *optional Boolean* -- passed attribute;
+* __value__ *String* - passed value;

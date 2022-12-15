@@ -2,12 +2,10 @@
 import { computed } from 'vue';
 import { parseEmail } from './utils';
 
-type Props = {
+const props = defineProps <{
   placeholder: string;
   value: string;
-};
-
-const props = defineProps <Props>();
+}>();
 
 const computedPlaceholder = computed(() => {
   const placeholderParts = parseEmail(props.placeholder);

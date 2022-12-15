@@ -21,8 +21,6 @@ const inputValue = computed({
   set: value => emit('update:value', sanitizeEmail(value)),
 });
 
-const input = ref<HTMLInputElement | null>(null);
-
 function handleInput(event: Event) {
   const { target } = event;
 
@@ -36,11 +34,17 @@ function handleInput(event: Event) {
     target.setSelectionRange(position, position);
   }
 }
+
+const inputElement = ref<HTMLInputElement | null>(null);
+
+defineExpose({
+  input: inputElement,
+});
 </script>
 
 <template>
   <input
-    ref="input"
+    ref="inputElement"
     v-model="inputValue"
     :autofocus="autofocus"
     class="email-input"
